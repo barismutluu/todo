@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+
+//Proje için gerekli metotların istenen crud işlemlerin tanımlanması ve sayfa url tanımlaması
 @RestController
 @RequestMapping("/api/todos")
 public class TodoController {
@@ -42,9 +44,9 @@ public class TodoController {
     public ResponseEntity<String> createTodo(@RequestBody TodoDTO todoDTO) {
         try {
             todoService.saveTodo(todoDTO);
-            return ResponseEntity.status(HttpStatus.CREATED).body("Not başarıyla oluşturuldu.");
+            return ResponseEntity.status(HttpStatus.CREATED).body("Görev başarıyla oluşturuldu.");
         } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Not oluşturulurken bir hata oluştu.");
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Görev oluşturulurken bir hata oluştu.");
         }
     }
 
@@ -52,9 +54,9 @@ public class TodoController {
     public ResponseEntity<String> updateTodoItem(@PathVariable Long id, @RequestBody TodoItem updatedItem) {
         try {
             TodoItem updated = todoService.updateTodoItem(id, updatedItem);
-            return ResponseEntity.ok("Not başarıyla güncellendi: " + updated.getId());
+            return ResponseEntity.ok("Görev başarıyla güncellendi: " + updated.getId());
         } catch (RuntimeException e) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Belirtilen ID'ye sahip bir Not bulunamadı: " + id);
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Belirtilen ID'ye sahip bir Görev bulunamadı: " + id);
         }
     }
 
@@ -62,9 +64,9 @@ public class TodoController {
     public ResponseEntity<String> deleteTodoById(@PathVariable Long id) {
         try {
             todoService.deleteTodoById(id);
-            return ResponseEntity.ok("Not başarıyla silindi.");
+            return ResponseEntity.ok("Görev başarıyla silindi.");
         } catch (RuntimeException e) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Belirtilen ID'ye sahip bir Not bulunamadı: " + id);
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Belirtilen ID'ye sahip bir Görev bulunamadı: " + id);
         }
     }
 }
