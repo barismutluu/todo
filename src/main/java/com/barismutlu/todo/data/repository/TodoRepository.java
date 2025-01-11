@@ -6,5 +6,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface TodoRepository extends JpaRepository<TodoItem,Long> {
-
+// JpaRepository'den standart CRUD işlemlerini devralır.
 }
