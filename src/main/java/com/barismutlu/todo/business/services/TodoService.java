@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.stream.Collectors;
-
+// CRUD işlemlerin tanımlanması ve database sorgulamaları
 @Service
 public class TodoService {
     private final TodoRepository todoRepository;
@@ -28,7 +28,7 @@ public class TodoService {
 
     public TodoDTO getTodoById(long id){
         TodoItem todoItem = todoRepository.findById(id)
-                .orElseThrow(() -> new TodoNotFoundException("Bu ID'ye sahip bir Todo bulunamadı: " + id));
+                .orElseThrow(() -> new TodoNotFoundException("Bu ID'ye sahip bir Görev bulunamadı: " + id));
         return TodoMapper.toDto(todoItem);
     }
 
@@ -37,7 +37,7 @@ public class TodoService {
             todo.setDescription(updatedItem.getDescription());
             todo.setCompleted(updatedItem.isCompleted());
             return todoRepository.save(todo);
-        }).orElseThrow(() -> new TodoNotFoundException("Güncellenmek istenen TodoItem bulunamadı: " + id));
+        }).orElseThrow(() -> new TodoNotFoundException("Güncellenmek istenen Görev bulunamadı: " + id));
     }
 
     public TodoDTO saveTodo(TodoDTO todoDTO){
@@ -47,7 +47,7 @@ public class TodoService {
 
     public void deleteTodoById(long id){
         if (!todoRepository.existsById(id)) {
-            throw new TodoNotFoundException("Silinmek istenen Todo bulunamadı: " + id);
+            throw new TodoNotFoundException("Silinmek istenen Görev bulunamadı: " + id);
         }
         todoRepository.deleteById(id);
     }
