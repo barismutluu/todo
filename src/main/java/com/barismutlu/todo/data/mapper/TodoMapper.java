@@ -4,6 +4,8 @@ import com.barismutlu.todo.business.dto.TodoDTO;
 import com.barismutlu.todo.data.entity.TodoItem;
 
 public class TodoMapper {
+
+    //Metotları, bir TodoDTO'yu TodoItem varlığına dönüştürür.
     public static TodoDTO toDto(TodoItem todoItem){
         TodoDTO dto=new TodoDTO();
         dto.setId(todoItem.getId());
