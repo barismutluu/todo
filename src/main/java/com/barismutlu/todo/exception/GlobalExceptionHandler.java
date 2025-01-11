@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 
 @ControllerAdvice
 public class GlobalExceptionHandler {
-
+//Projede karşılaşılan sunucu hataların ekrana gösterilmesi
     @ExceptionHandler(TodoNotFoundException.class)
     public ResponseEntity<String> handleTodoNotFoundException(TodoNotFoundException ex) {
         return ResponseEntity.status(HttpStatus.NOT_FOUND)
