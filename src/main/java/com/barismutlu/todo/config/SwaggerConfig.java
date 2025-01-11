@@ -7,7 +7,7 @@ import springfox.documentation.spring.web.plugins.Docket;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-//Swagger-ui tanımlanması
+//Swagger-ui tanımlaması
 @Configuration
 public class SwaggerConfig {
     @Bean
